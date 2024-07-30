@@ -9,6 +9,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
+      devOptions: {
+        enabled: true,
+      },
       manifest: {
         short_name: 'TravelApp',
         name: 'Travel App',
