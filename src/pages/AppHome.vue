@@ -1,12 +1,16 @@
 <script>
+import HomeHero from '../components/home/HomeHero.vue';
+
 export default {
-    
+    components:{
+        HomeHero
+    }
 }
 </script>
 <template lang="">
-    <div>
-        <h1>Home page</h1>
-    </div>
+    <main>
+        <HomeHero/>
+    </main>
 </template>
 <style lang="">
     
