@@ -12,6 +12,22 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
+      workbox: {
+        globPatterns: ['**/*.{js,scss,css,vue,html,png}'],
+        runtimeCaching: [
+          {
+            urlPattern: ({ request }) => request.destination === 'document' || request.destination === 'script' || request.destination === 'style' || request.destination === 'image',
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'my-app-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 30 giorni
+              },
+            },
+          },
+        ],
+      },
       manifest: {
         short_name: 'TravelApp',
         name: 'Travel App',
