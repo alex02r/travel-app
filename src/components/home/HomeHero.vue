@@ -8,7 +8,7 @@ export default {
         <div class="row">
             <div class="col-12">
                 <div class="">
-                    <h1>Home Page</h1>
+                    <h1 class="text-center text-md-start">Home Page</h1>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, provident libero. Illum ad aliquam temporibus, atque eligendi repudiandae beatae consectetur, repellendus ipsam rerum voluptatibus accusantium quos hic nam blanditiis maxime.
                     </p>
