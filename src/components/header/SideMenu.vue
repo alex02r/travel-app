@@ -1,6 +1,12 @@
 <script>
+import { store } from '../../store';
 export default {
-    name: 'SideMenu'
+    name: 'SideMenu',
+    data() {
+        return {
+            store
+        }
+    },
 }
 </script>
 <template lang="">
@@ -18,16 +24,10 @@ export default {
             <div class="offcanvas-body">
               <div>
                <ul class="list-unstyled d-flex flex-column gap-4">
-                    <li>
-                        <a class="link-light link-underline-opacity-0 link-underline-opacity-75-hover" href="" ><h4>Home page</h4></a>
-                    </li>
-                    <li>
-                        <a class="link-light link-underline-opacity-0 link-underline-opacity-75-hover" href=""><h4>Aggiungi un viaggio</h4></a>
-                        
-                    </li>
-                    <li>
-                        <a class="link-light link-underline-opacity-0 link-underline-opacity-75-hover" href=""><h4>I miei viaggi</h4></a>
-                        
+                    <li v-for="(item, index) in store.menuList" ::key="index" >
+                        <router-link :to="{ name: item.name }" class="link-light link-underline-opacity-75-hover" :class="item.name == $route.name ? 'link-underline-opacity-75 ' : 'link-underline-opacity-0 '">
+                            <h4 data-bs-dismiss="offcanvas">{{ item.label }}</h4>
+                        </router-link>
                     </li>
                </ul>
               </div>

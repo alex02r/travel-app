@@ -1,10 +1,16 @@
 <script>
 import SideMenu from './header/SideMenu.vue';
+import { store } from "../store.js";
 
 export default {
     name: 'AppHeader',
     components:{
         SideMenu
+    },
+    data(){
+        return{
+            store
+        }
     }
 }
 </script>
@@ -22,9 +28,9 @@ export default {
                     <h2 class="text-end d-md-none">Travel App</h2>
 
                     <ul class="list-unstyled d-none d-md-flex justify-content-end align-items-center gap-4">
-                        <li class="active">Home page</li>
-                        <li>Aggiungi Viaggio</li>
-                        <li>I miei viaggi</li>
+                        <li v-for="(item, index) in store.menuList" ::key="index" >
+                            <router-link :to="{ name: item.name }" :class="item.name == $route.name ? 'active' : ''">{{ item.label }}</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -37,10 +43,14 @@ export default {
 
     .list-unstyled{
         li{
-            padding: 0.5rem;
             cursor: pointer;
         }
-        li:hover{
+        li a{
+            padding: 0.5rem;
+            text-decoration: none;
+            color: $white;
+        }
+        li a:hover{
             border-radius: 50px;
             background-color: $soft-gray;
             color: $dark;
