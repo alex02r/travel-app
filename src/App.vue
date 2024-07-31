@@ -6,6 +6,6 @@ export default {
 <template lang="">
   <router-view/>
 </template>
-<style lang="">
-  
+<style lang="scss">
+  @use './styles/generals.scss';
 </style>
