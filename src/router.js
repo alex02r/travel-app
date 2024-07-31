@@ -6,7 +6,7 @@ import AppHome from "./pages/AppHome.vue";
 const router = createRouter({
     history: createWebHistory(),
 
-    routers: [
+    routes: [
         {
             path: '/',
             name: 'home',
@@ -14,3 +14,5 @@ const router = createRouter({
         }
     ]
 })
+
+export { router };
