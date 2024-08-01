@@ -1,15 +1,58 @@
 <script>
+import Loader from "../components/Loader.vue";
+
 export default {
-    name: 'AppTravel'
+    name: 'AppTravel',
+    components:{
+        Loader
+    },
+    data() {
+        return {
+            travel: {},
+            loader: false
+        }
+    },
+    mounted() {
+        this.findTravel();
+    },
+    methods: {
+        findTravel(){
+            this.loader = true
+            //recuperiamo l'array dei viaggi
+            const travelsJSON = localStorage.getItem('travels');
+            const travels = travelsJSON ? JSON.parse(travelsJSON) : [];
+
+            //Cerchiamo nell'array il viaggio con l'id che abbiamo passato tramite parametro della rotta
+            this.travel = travels.find(element => element.id == this.$route.params.id);
+
+            //impostiamo un timer per la visualizzazione del caricamento
+            setTimeout(()=>{
+                this.loader = false
+            }, 1000);
+        }
+    },
 }
 </script>
 <template lang="">
     <div class="container py-5">
         <div class="row">
-            
+            <div class="col-12" v-if="loader">
+                <Loader/>
+            </div>
+            <div class="col-12" v-else>
+                <div class="mb-4">
+                    <h1>{{ travel.title }}</h1>
+                    <h4>{{ travel.date }}</h4>
+                    <p> {{ travel.desc }} </p>
+                </div>
+                <div class="mb-4">
+                    <h2>Tappe</h2>
+                </div>
+                <h2>Mappa</h2>
+            </div>
         </div>
     </div>
 </template>
 <style lang="">
-    
+
 </style>
