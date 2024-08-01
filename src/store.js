@@ -9,6 +9,10 @@ export const store = reactive({
         {
             name: 'addTravel',
             label: 'Aggiungi Viaggio'
+        },
+        {
+            name: 'myTravels',
+            label: 'I Miei Viaggi'
         }
     ]
 })
