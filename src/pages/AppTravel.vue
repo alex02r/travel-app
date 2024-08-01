@@ -1,10 +1,12 @@
 <script>
 import Loader from "../components/Loader.vue";
+import StepTravel from "../components/travel/StepTravel.vue";
 
 export default {
     name: 'AppTravel',
     components:{
-        Loader
+        Loader,
+        StepTravel
     },
     data() {
         return {
@@ -46,7 +48,7 @@ export default {
                     <p> {{ travel.desc }} </p>
                 </div>
                 <div class="mb-4">
-                    <h2>Tappe</h2>
+                    <StepTravel :stages="travel.stages"/>
                 </div>
                 <h2>Mappa</h2>
             </div>
