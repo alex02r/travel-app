@@ -14,7 +14,7 @@ export default {
                 </h2>
                 <h3 class="h2 mb-2">Oops! Ti sei perso.</h3>
                 <p class="mb-5">La pagina che stai cercando non esiste.</p>
-                <router-link to="home" class="btn bsb-btn-5xl btn-light rounded-pill px-5 fs-6 m-0">Torna alla Home</router-link>
+                <router-link :to="{ name: 'home' }" class="btn bsb-btn-5xl btn-light rounded-pill px-5 fs-6 m-0">Torna alla Home</router-link>
               </div>
             </div>
           </div>
