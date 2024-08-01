@@ -54,7 +54,7 @@ export default {
                     title: this.title,
                     date: this.date,
                     desc: this.desc,
-                    stages: {}
+                    stages: []
                 };
                 //recuperiamo l'array dei viaggi
                 const travelsJSON = localStorage.getItem('travels');
