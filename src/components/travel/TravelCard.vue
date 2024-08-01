@@ -5,7 +5,7 @@ export default {
         travel: Object
     },
     mounted() {
-        console.log(this.travel);
+        
     },
 }
 </script>
