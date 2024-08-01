@@ -35,11 +35,10 @@ export default {
             <div class="col-12">
                 <div class="mb-4">
                     <h2>Ultimo viaggio</h2>
+                    
                 </div>
-                <TravelCard v-if="travel.length > 0" :travel="travel"/>
-                <div class="" v-else>
-                    <h3>Non sono presenti dei viaggi</h3>
-                </div>
+                <h3  v-if="travel.length == 0">Non sono presenti dei viaggi</h3>
+                <TravelCard v-else :travel="travel"/>
             </div>
         </div>
     </div>
