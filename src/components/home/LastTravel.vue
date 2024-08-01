@@ -21,8 +21,10 @@ export default {
             const travelsJSON = localStorage.getItem('travels');
             const travels = travelsJSON ? JSON.parse(travelsJSON) : []; 
 
-            //asseggnamo il valore alla variabile travel
-            this.travel = travels[travels.length - 1];
+            if (travels.length > 0) {
+                //asseggnamo il valore alla variabile travel
+                this.travel = travels[travels.length - 1];
+            }
         }
     },
 }
@@ -34,7 +36,10 @@ export default {
                 <div class="mb-4">
                     <h2>Ultimo viaggio</h2>
                 </div>
-                <TravelCard :travel="travel"/>
+                <TravelCard v-if="travel.length > 0" :travel="travel"/>
+                <div class="" v-else>
+                    <h3>Non sono presenti dei viaggi</h3>
+                </div>
             </div>
         </div>
     </div>
