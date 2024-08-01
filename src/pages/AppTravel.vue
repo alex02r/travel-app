@@ -24,18 +24,24 @@ export default {
             const travelsJSON = localStorage.getItem('travels');
             const travels = travelsJSON ? JSON.parse(travelsJSON) : [];
 
-            if (travels.length > 0) {
-                //Cerchiamo nell'array il viaggio con l'id che abbiamo passato tramite parametro della rotta
-                this.travel = travels.find(element => element.id == this.$route.params.id);
-            }else{
-                //visualizziamo la pagina 404
-                this.$router.push({ name: 'not-found' });
-            }
+            const routeId = parseInt(this.$route.params.id, 10);
 
-            //impostiamo un timer per la visualizzazione del caricamento
-            setTimeout(()=>{
+            //Cerchiamo nell'array il viaggio con l'id che abbiamo passato tramite parametro della rotta
+            this.travel = travels.find(element => element.id === routeId);
+            
+            if (!this.travel) {
                 this.loader = false
-            }, 1000);
+                // Se il viaggio non viene trovato, reindirizza alla pagina 404
+                this.$router.push({ name: 'not-found' });
+                
+                return;
+            }else{
+                //impostiamo un timer per la visualizzazione del caricamento
+                setTimeout(()=>{
+                    this.loader = false
+                }, 1000);
+            }    
+
         }
     },
 }
@@ -46,7 +52,7 @@ export default {
             <div class="col-12" v-if="loader">
                 <Loader/>
             </div>
-            <div class="col-12" v-else>
+            <div class="col-12" v-else-if="travel">
                 <div class="mb-4">
                     <h1>{{ travel.title }}</h1>
                     <h4>{{ travel.date }}</h4>
