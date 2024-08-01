@@ -24,8 +24,13 @@ export default {
             const travelsJSON = localStorage.getItem('travels');
             const travels = travelsJSON ? JSON.parse(travelsJSON) : [];
 
-            //Cerchiamo nell'array il viaggio con l'id che abbiamo passato tramite parametro della rotta
-            this.travel = travels.find(element => element.id == this.$route.params.id);
+            if (travels.length > 0) {
+                //Cerchiamo nell'array il viaggio con l'id che abbiamo passato tramite parametro della rotta
+                this.travel = travels.find(element => element.id == this.$route.params.id);
+            }else{
+                //visualizziamo la pagina 404
+                this.$router.push({ name: 'not-found' });
+            }
 
             //impostiamo un timer per la visualizzazione del caricamento
             setTimeout(()=>{
