@@ -1,15 +1,18 @@
 <script>
 import HomeHero from '../components/home/HomeHero.vue';
+import LastTravel from '../components/home/LastTravel.vue';
 
 export default {
     components:{
-        HomeHero
+        HomeHero,
+        LastTravel
     }
 }
 </script>
 <template lang="">
     <main>
         <HomeHero/>
+        <LastTravel/>
     </main>
 </template>
 <style lang="">
