@@ -59,7 +59,7 @@ export default {
                     <p> {{ travel.desc }} </p>
                 </div>
                 <div class="mb-4">
-                    <StepTravel :stages="travel.stages"/>
+                    <StepTravel :trip="travel"/>
                 </div>
                 <h2>Mappa</h2>
             </div>
