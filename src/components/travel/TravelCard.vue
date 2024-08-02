@@ -10,7 +10,7 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+    <div class="card text-bg-light mb-3">
         <div class="card-header">Viaggio</div>
         <div class="card-body">
           <h5 class="card-title">{{ travel.title }}</h5>
