@@ -1,6 +1,11 @@
 <script>
+import StarRating from "../components/travel/StarRating.vue";
+
 export default {
     name: 'AppNewStage',
+    components:{
+        StarRating
+    },
     data() {
         return {
             travel: {},
@@ -9,6 +14,7 @@ export default {
             date: '',
             desc: '',
             img: '',
+            rating: 0,
             errors: {}
         }
     },
@@ -36,6 +42,10 @@ export default {
             //controllo sulla descrizione
             if (!this.desc) {
                 this.errors.desc = 'La descrizione è obbligatoria.';
+            }
+            //controllo sulla valutazione
+            if (this.rating === 0) { // Controllo se la valutazione è stata impostata
+                this.errors.rating = 'La valutazione è obbligatoria.';
             }
 
             //restituisce true se non sono presenti errori
@@ -71,7 +81,7 @@ export default {
                     date: this.date,
                     desc: this.desc,
                     img: this.getUrlImg(),
-                    valutazione: 5
+                    rating: this.rating
                 }
                 // Aggiungiamo il nuovo stage all'array stages del viaggio
                 this.travel.stages.push(newStage);
@@ -93,7 +103,7 @@ export default {
             }
 
         },
-        addNewStage(){
+        addNewStage(){ 
 
             //recuperiamo l'array di viaggi
             const travelsJSON = localStorage.getItem('travels');
@@ -116,7 +126,7 @@ export default {
 <template lang="">
     <div class="container py-5">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 co-md-8 col-lg-6">
                 <h1>Inserisci un nuovo step </h1>
                 <div class="card">
                     <div class="card-body">
@@ -147,6 +157,11 @@ export default {
                                 <label for="img" class="form-label">Inserisci l'URL dell'immagine:</label>
                                 <input type="text" id="img" name="img" v-model="img" :class="{'form-control': true, 'is-invalid': errors.img}">
                                 <div v-if="errors.img" class="invalid-feedback">{{ errors.img }}</div>
+                            </div>
+                            <div class="mb-3 has-validation">
+                                <label class="form-label">Valutazione:</label>
+                                <StarRating v-model:rating="rating" />
+                                <div v-if="errors.rating" class="invalid-feedback" style="display:block">{{ errors.rating }}</div>
                             </div>
                             <button type="submit" class="btn btn-dark">Aggiungi</button>
                         </form>
