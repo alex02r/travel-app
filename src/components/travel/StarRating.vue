@@ -2,34 +2,42 @@
 export default {
     name: 'StarRating',
     props: {
-    maxStars: {
-      type: Number,
-      default: 5
-    }
-  },
-  data() {
-    return {
-      rating: 0,
-      hover: 0
-    };
-  },
-  computed: {
-    stars() {
-      return Array.from({ length: this.maxStars }, (_, i) => i + 1);
-    }
-  },
-  methods: {
-    setRating(star) {
-      this.rating = star;
-      this.$emit('update:rating', this.rating);
+        rating: {
+            type: Number,
+            default: 0
+        },
+        maxStars: {
+            type: Number,
+            default: 5
+        },
+        readonly: {
+            type: Boolean,
+            default: false
+        }
     },
-    hoverRating(star) {
-      this.hover = star;
+    data() {
+        return {
+        hover: 0
+        };
     },
-    resetHover() {
-      this.hover = 0;
+    computed: {
+        stars() {
+        return Array.from({ length: this.maxStars }, (_, i) => i + 1);
+        }
+    },
+    methods: {
+        setRating(star) {
+            if (!this.readonly) {
+                this.$emit('update:rating', star);
+            }
+        },
+        hoverRating(star) {
+            this.hover = star;
+        },
+        resetHover() {
+            this.hover = 0;
+        }
     }
-  }
 }
 </script>
 <template lang="">
