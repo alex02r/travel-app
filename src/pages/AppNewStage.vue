@@ -8,6 +8,7 @@ export default {
     },
     data() {
         return {
+            travelId: null,
             travel: {},
             title: '',
             address: '',
@@ -19,7 +20,9 @@ export default {
         }
     },
     created() {
-        
+        this.travelId = parseInt(this.$route.params.id);
+        console.log('travelId: '+ this.travelId);
+        console.log('router id: '+this.$route.params.id);
     },
     methods: {
         validateForm() {
@@ -107,12 +110,12 @@ export default {
 
             //recuperiamo l'array di viaggi
             const travelsJSON = localStorage.getItem('travels');
-            const travels = travelsJSON ? JSON.parse(travelsJSON) : [];
-
+            const travels = travelsJSON ? JSON.parse(travelsJSON) : [];            
+            
             //Troviamo il viaggio con l'id che abbiamo 
-            this.travel = travels.find(element => element.id === parseInt(this.$router.params.id));
+            this.travel = travels.find(element => element.id === this.travelId);
 
-            if (!travel) {
+            if (!this.travel) {
                 //se non viene trovato significa che non esiste questa pagina
                 this.$router.push({ name: 'not-found' });
                 return;
@@ -126,7 +129,7 @@ export default {
 <template lang="">
     <div class="container py-5">
         <div class="row">
-            <div class="col-12 co-md-8 col-lg-6">
+            <div class="col-12 col-md-8 col-lg-6">
                 <h1>Inserisci un nuovo step </h1>
                 <div class="card">
                     <div class="card-body">
@@ -160,7 +163,7 @@ export default {
                             </div>
                             <div class="mb-3 has-validation">
                                 <label class="form-label">Valutazione:</label>
-                                <StarRating v-model:rating="rating" />
+                                <StarRating v-model:rating="rating" :readonly="false"/>
                                 <div v-if="errors.rating" class="invalid-feedback" style="display:block">{{ errors.rating }}</div>
                             </div>
                             <button type="submit" class="btn btn-dark">Aggiungi</button>
