@@ -2,7 +2,7 @@
 export default {
     name: 'StepTravel',
     props:{
-        stages: Array
+        trip: Object
     }
 }
 </script>
@@ -11,10 +11,12 @@ export default {
         <div class="col-12">
             <div class="d-flex align-items-center gap-4">
                 <h2>Tappe</h2>
-                <a href="" class="btn btn-light"><i class="fas fa-plus"></i></a>
+                <router-link :to="{ name: 'addStage', params: { id: trip.id }  }" class="btn btn-light">
+                    <i class="fas fa-plus"></i>
+                </router-link>
             </div>
         </div>
-        <div class="col-12" v-for="(stage, index) in stages" :key="index">
+        <div class="col-12" v-for="(stage, index) in trip.stages" :key="index">
             
         </div>
     </div>
