@@ -11,8 +11,9 @@ export default {
             travel: {}
         }
     },
-    mounted() {
+    created() {
         this.getLastTravel();
+        
     },
     methods: {
         //funzione per asseggnare l'ultimo viaggio inserito
@@ -37,8 +38,8 @@ export default {
                     <h2>Ultimo viaggio</h2>
                     
                 </div>
-                <h3  v-if="travel.length == 0">Non sono presenti dei viaggi</h3>
-                <TravelCard v-else :travel="travel"/>
+                <TravelCard v-if="travel" :travel="travel"/>
+                <h4 v-else>Non sono presenti dei viaggi</h4>
             </div>
         </div>
     </div>
