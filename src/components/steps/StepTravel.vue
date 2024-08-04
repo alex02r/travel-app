@@ -37,7 +37,7 @@ export default {
                                 <p>
                                     {{ stage.desc }}
                                 </p>
-                                <StarRating :rating="stage.rating" :readonly="tru"/>
+                                <StarRating :rating="stage.rating" :readonly="true"/>
                             </div>
                             <div class="col-6">
                                 <img :src="stage.img" :alt="stage.title" class="img-fluid">
@@ -47,7 +47,6 @@ export default {
                   </div>
                 </div>
               </div>
-            {{ stage }}
         </div>
     </div>
 </template>
