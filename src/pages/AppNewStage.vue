@@ -1,5 +1,5 @@
 <script>
-import StarRating from "../components/travel/StarRating.vue";
+import StarRating from "../components/steps/StarRating.vue";
 
 export default {
     name: 'AppNewStage',
