@@ -1,5 +1,5 @@
 <script>
-import StarRating from '../steps./travel/StarRating.vue';
+import StarRating from './StarRating.vue';
 
 export default {
     name: 'StepTravel',
@@ -25,11 +25,11 @@ export default {
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item" v-for="(stage, index) in trip.stages" :key="index">
                   <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" :data-bs-target="'#flush-collapseOne'+index" aria-expanded="false" aria-controls="flush-collapseOne">
                       Tappa {{ index + 1 }}
                     </button>
                   </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div :id="'flush-collapseOne'+index" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <div class="row">
                             <div class="col-6">
