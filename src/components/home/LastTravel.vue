@@ -8,12 +8,11 @@ export default {
     },
     data() {
         return {
-            travel: {}
+            travel: null
         }
     },
-    created() {
+    mounted() {
         this.getLastTravel();
-        
     },
     methods: {
         //funzione per asseggnare l'ultimo viaggio inserito
@@ -21,11 +20,13 @@ export default {
             //recuperiamo l'array dei viaggi
             const travelsJSON = localStorage.getItem('travels');
             const travels = travelsJSON ? JSON.parse(travelsJSON) : []; 
-
+            
             if (travels.length > 0) {
                 //asseggnamo il valore alla variabile travel
                 this.travel = travels[travels.length - 1];
             }
+            
+            return
         }
     },
 }
@@ -38,7 +39,7 @@ export default {
                     <h2>Ultimo viaggio</h2>
                     
                 </div>
-                <TravelCard v-if="travel" :travel="travel"/>
+                <TravelCard v-if="travel != null" :travel="travel"/>
                 <h4 v-else>Non sono presenti dei viaggi</h4>
             </div>
         </div>
