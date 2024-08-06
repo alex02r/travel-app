@@ -31,9 +31,7 @@ export default {
                 <router-link to="addTravel" class="btn btn-light"><i class="fas fa-plus"></i></router-link>
             </div>
             <div class="col-12 col-md-4 col-lg-3" v-for="travel in travels" ::key="travel.id">
-                <router-link :to="{ name: 'travel', params: { id: travel.id }  }" class="link-underline link-underline-opacity-0">
-                    <TravelCard :travel="travel" class="travel-card" />
-                </router-link>
+                <TravelCard :travel="travel"/>
             </div>
             <div class="col-12" v-if="travels.length == 0">
                 <h3>Non ci sono viaggi da visualizzare <router-link to="addTravel" class="link-light link-underline-opacity-25 link-underline-opacity-75-hover">aggiungine uno</router-link></h3>
@@ -41,11 +39,5 @@ export default {
         </div>
     </div>
 </template>
-<style lang="scss" scoped>
-    .travel-card{
-        transition: all 0.2s ease-in;
-    }
-    .travel-card:hover{
-        transform: scale(1.05);
-    }
+<style lang="">
 </style>
