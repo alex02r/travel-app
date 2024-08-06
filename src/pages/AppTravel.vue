@@ -2,13 +2,15 @@
 import Loader from "../components/Loader.vue";
 import StepTravel from "../components/steps/StepTravel.vue";
 import StepsMap from "../components/steps/StepsMap.vue";
+import ProgressSteps from "../components/steps/ProgressSteps.vue";
 
 export default {
     name: 'AppTravel',
     components:{
         Loader,
         StepTravel,
-        StepsMap
+        StepsMap,
+        ProgressSteps,
     },
     data() {
         return {
@@ -62,6 +64,7 @@ export default {
                 </div>
                 <div class="mb-4">
                     <StepTravel :trip="travel"/>
+                    <ProgressSteps :road="travel"/>
                 </div>
                 <div class="">
                     <h2>Mappa</h2>
