@@ -21,8 +21,6 @@ export default {
     },
     created() {
         this.travelId = parseInt(this.$route.params.id);
-        console.log('travelId: '+ this.travelId);
-        console.log('router id: '+this.$route.params.id);
     },
     methods: {
         validateForm() {
