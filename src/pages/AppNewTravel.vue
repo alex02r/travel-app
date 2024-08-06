@@ -65,15 +65,17 @@ export default {
 
                 //salviamo l'array dei viaggi
                 localStorage.setItem('travels', JSON.stringify(travels));
-                //eseguiamo una vibrazione di 200millisecondi
-                navigator.vibrate(200);
-
-                alert('Viaggio registrato con successo!');
-
+                
                 // Reset form
                 this.title = '';
                 this.date = '';
                 this.desc = '';
+
+                //eseguiamo una vibrazione di 200millisecondi
+                navigator.vibrate(200);
+
+                this.$router.push({ name: 'travel', params: { id: travel.id } });
+                return
             }
         }
     },
