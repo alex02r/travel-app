@@ -41,10 +41,12 @@ export default {
 }
 </script>
 <template>
-    <ol class="c-stepper">
-        <li class="c-stepper__item" v-for="(stage, index) in road.stages" :key="index" :class="stage.state ? 'item-active' : ''" data-bs-toggle="modal" data-bs-target="#stageModal" @click="stageValue = stage">
+    <h2>Tappe</h2>
+    <span class="stage-indicator">Clicca sul nome della tappa per impostare lo stato *</span>
+    <ol class="c-stepper mt-4">
+        <li class="c-stepper__item" v-for="(stage, index) in road.stages" :key="index" :class="stage.state ? 'item-active' : ''">
             <div class="c-stepper__content">
-                <h3 class="c-stepper__title" :class="stage.state ? 'content-active' : ''"><i :class="stage.state ? 'fas fa-check' : 'fas fa-xmark'"></i> {{ stage.title }}</h3>
+                <h3 class="c-stepper__title" :class="stage.state ? 'content-active' : ''" data-bs-toggle="modal" data-bs-target="#stageModal" @click="stageValue = stage"><i :class="stage.state ? 'fas fa-check' : 'fas fa-xmark'"></i> {{ stage.title }}</h3>
                 <div class="row align-items-center">
                     <div class="col-4">
                         <img :src="stage.img" :alt="stage.title" class="img-fluid">
@@ -57,20 +59,26 @@ export default {
             </div>
         </li>
     </ol>
-    <div class="modal fade" id="stageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" v-if="stageValue">
-        <div class="modal-dialog text-dark">
-            <div class="modal-content">
+    <div class="modal fade" id="stageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-dark" v-if="stageValue">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ stageValue.title }}</h1>
+                    <h4 class="modal-title" id="exampleModalLabel">{{ stageValue.title }}</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <h4 v-if="stageValue.state">Sei sicuro di voler deselezionare questa tappa ?</h4>
-                    <h4 v-if="!stageValue.state">Sei sicuro di voler selezionare questa tappa come eseguita ?</h4>
+                <div class="modal-body py-4">
+                    <p>
+                        <span v-if="stageValue.state">Sei sicuro di voler deselezionare questa tappa ?</span>
+                        <span v-if="!stageValue.state">Sei sicuro di voler selezionare questa tappa come eseguita ?</span>
+                        <br>
+                        <span class="stage-indicator">
+                            Potrai sempre cambiare lo stato della tappa in qualsiasi momento vuoi.
+                        </span>
+                    </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
-                    <button type="button" class="btn btn-warning" @click="setStep(stageValue)" data-bs-dismiss="modal">Modifica</button>
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-warning rounded-pill" @click="setStep(stageValue)" data-bs-dismiss="modal">Salva</button>
                 </div>
             </div>
         </div>
@@ -78,9 +86,11 @@ export default {
 </template>
 <style lang="scss" scoped>
 @use '/src/styles/partials/variables' as *;
-  
+    .stage-indicator{
+        font-size: 0.8rem;
+        color: $dark-gray;
+    }
     .c-stepper__item {
-        cursor: pointer;
         position: relative;
         display: flex;
         gap: 1rem;
@@ -114,6 +124,7 @@ export default {
     }
     .c-stepper__title {
         font-weight: bold;
+        cursor: pointer;
         color: $deep-gray;
         font-size: clamp(1rem, 4vw, 1.25rem);
         margin-bottom: clamp(0.85rem, 2vmax, 1rem);
