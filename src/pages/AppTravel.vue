@@ -1,7 +1,6 @@
 <script>
 import Loader from "../components/Loader.vue";
 import StepTravel from "../components/steps/StepTravel.vue";
-import StepsMap from "../components/steps/StepsMap.vue";
 import ProgressSteps from "../components/steps/ProgressSteps.vue";
 
 export default {
@@ -9,7 +8,6 @@ export default {
     components:{
         Loader,
         StepTravel,
-        StepsMap,
         ProgressSteps,
     },
     data() {
