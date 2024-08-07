@@ -49,12 +49,23 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="container py-5">
-        <div class="row">
-            <div class="col-12" v-if="loader">
-                <Loader/>
+    <!-- LOADER SECTION -->
+    <section class="py-3 py-md-5 min-vh-100 d-flex justify-content-center align-items-center" v-if="loader">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <div class="d-flex justify-content-center align-items-center gap-2">
+                            <loader/>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-12" v-else-if="travel">
+        </div>
+    </section>
+    <div class="container py-5" v-else-if="travel">
+        <div class="row">
+            <div class="col-12">
                 <div class="mb-4">
                     <h1>{{ travel.title }}</h1>
                     <h4>{{ travel.date }}</h4>
