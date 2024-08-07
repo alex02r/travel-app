@@ -1,4 +1,6 @@
 <script>
+import { StorageService } from "../localStorage.service";
+
 export default {
     name: 'AppNewTravel',
     data() {
@@ -35,8 +37,7 @@ export default {
         //funzione che genera l'id in maniera auromatica in base ai viaggi creati
         generaNuovoId() { 
             // Recupera l'array dei viaggi dal LocalStorage 
-            const travelsJSON = localStorage.getItem('travels'); 
-            const travels = travelsJSON ? JSON.parse(travelsJSON) : []; 
+            const travels = StorageService.getTravels();
 
             // Se l'array è vuoto, ritorna 1 come nuovo ID 
             if (travels.length === 0) { return 1; } 
@@ -57,22 +58,19 @@ export default {
                     stages: []
                 };
                 //recuperiamo l'array dei viaggi
-                const travelsJSON = localStorage.getItem('travels');
-                const travels = travelsJSON ? JSON.parse(travelsJSON) : [];
+                const travels = StorageService.getTravels();
 
                 //aggiungiamo il nuovo viaggio
                 travels.push(travel);
-
                 //salviamo l'array dei viaggi
-                localStorage.setItem('travels', JSON.stringify(travels));
+                StorageService.setTravels(travels);
+                //eseguiamo una vibrazione di 200millisecondi
+                navigator.vibrate(200);
                 
                 // Reset form
                 this.title = '';
                 this.date = '';
                 this.desc = '';
-
-                //eseguiamo una vibrazione di 200millisecondi
-                navigator.vibrate(200);
 
                 this.$router.push({ name: 'travel', params: { id: travel.id } });
                 return

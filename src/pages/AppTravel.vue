@@ -1,13 +1,14 @@
 <script>
 import Loader from "../components/Loader.vue";
-import StepTravel from "../components/steps/StepTravel.vue";
+import StepsMap from "../components/steps/StepsMap.vue";
 import ProgressSteps from "../components/steps/ProgressSteps.vue";
+import { StorageService } from "../localStorage.service";
 
 export default {
     name: 'AppTravel',
     components:{
         Loader,
-        StepTravel,
+        StepsMap,
         ProgressSteps,
     },
     data() {
@@ -23,8 +24,7 @@ export default {
         findTravel(){
             this.loader = true
             //recuperiamo l'array dei viaggi
-            const travelsJSON = localStorage.getItem('travels');
-            const travels = travelsJSON ? JSON.parse(travelsJSON) : [];
+            const travels = StorageService.getTravels();
 
             const routeId = parseInt(this.$route.params.id, 10);
 

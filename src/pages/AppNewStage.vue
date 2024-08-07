@@ -1,5 +1,6 @@
 <script>
 import StarRating from "../components/steps/StarRating.vue";
+import { StorageService } from "../localStorage.service";
 
 export default {
     name: 'AppNewStage',
@@ -88,8 +89,7 @@ export default {
                 this.travel.stages.push(newStage);
 
                 // Recuperiamo l'array dei viaggi
-                const travelsJSON = localStorage.getItem('travels');
-                const travels = travelsJSON ? JSON.parse(travelsJSON) : [];
+                const travels = StorageService.getTravels();
 
                 // Troviamo il viaggio corrente e lo aggiorniamo nell'array dei viaggi
                 const updatedTravels = travels.map(travel => {
@@ -97,7 +97,7 @@ export default {
                 });
 
                 // Salviamo l'array aggiornato nel LocalStorage
-                localStorage.setItem('travels', JSON.stringify(updatedTravels));
+                StorageService.setTravels(updatedTravels);
 
                 // Reindirizzamento o altro comportamento dopo il salvataggio
                 this.$router.push({ name: 'travel', params: { id: this.travel.id } });
