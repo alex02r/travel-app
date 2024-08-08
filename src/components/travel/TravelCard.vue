@@ -1,17 +1,21 @@
 <script>
+import { motionFadeUp } from '../../motions';
+
 export default {
     name: 'TravelCard',
     props:{
         travel: Object
     },
-    mounted() {
-        
+    data() {
+        return {
+            motionFadeUp
+        }
     },
 }
 </script>
 <template lang="">
     <router-link :to="{ name: 'travel', params: { id: travel.id } }" class="link-underline link-underline-opacity-0">            
-        <div class="card text-bg-light mb-3">
+        <div class="card text-bg-light mb-3" v-motion="motionFadeUp">
             <div class="card-header">Viaggio</div>
             <div class="card-body">
               <h5 class="card-title">{{ travel.title }}</h5>
