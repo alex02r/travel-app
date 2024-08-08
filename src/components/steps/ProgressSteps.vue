@@ -1,6 +1,7 @@
 <script>
 import StarRating from "./StarRating.vue"
 import { StorageService } from "../../localStorage.service";
+import { motionFadeLeft } from "../../motions";
 
 export default {
     name: 'ProgressSteps',
@@ -12,7 +13,8 @@ export default {
     },
     data() {
         return {
-            stageValue: null
+            stageValue: null,
+            motionFadeLeft
         }
     },
     methods: {
@@ -45,10 +47,10 @@ export default {
         <h2>Tappe</h2>
         <router-link :to="{ name: 'addStage', params: { id: road.id } }" class="btn btn-sm btn-light"><i class="fas fa-plus"></i></router-link>
     </div>
-    <span class="stage-indicator">Clicca sul nome della tappa per impostare lo stato *</span>
+    <span class="stage-indicator" v-if="road.stages && road.stages.length > 0">Clicca sul nome della tappa per impostare lo stato *</span>
     <ol class="c-stepper mt-4">
         <li class="c-stepper__item" v-for="(stage, index) in road.stages" :key="index" :class="stage.state ? 'item-active' : ''">
-            <div class="c-stepper__content">
+            <div class="c-stepper__content" v-motion="motionFadeLeft">
                 <h3 class="c-stepper__title" :class="stage.state ? 'content-active' : ''" data-bs-toggle="modal" data-bs-target="#stageModal" @click="stageValue = stage"><i :class="stage.state ? 'fas fa-check' : 'fas fa-xmark'"></i> {{ stage.title }}</h3>
                 <div class="row align-items-center">
                     <div class="col-4">
