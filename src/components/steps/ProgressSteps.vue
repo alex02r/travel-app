@@ -41,7 +41,10 @@ export default {
 }
 </script>
 <template>
-    <h2>Tappe</h2>
+    <div class="d-flex gap-4 align-items-center">
+        <h2>Tappe</h2>
+        <router-link :to="{ name: 'addStage', params: { id: road.id } }" class="btn btn-sm btn-light"><i class="fas fa-plus"></i></router-link>
+    </div>
     <span class="stage-indicator">Clicca sul nome della tappa per impostare lo stato *</span>
     <ol class="c-stepper mt-4">
         <li class="c-stepper__item" v-for="(stage, index) in road.stages" :key="index" :class="stage.state ? 'item-active' : ''">
