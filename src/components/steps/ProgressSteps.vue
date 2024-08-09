@@ -62,7 +62,7 @@ export default {
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <router-link :to="{ name: 'editStage', params: { id: stage.id } }" class="dropdown-item">
+                                    <router-link :to="{ name: 'editStage', params: { travelId: road.id , id: stage.id } }" class="dropdown-item">
                                         <i class="fa-regular fa-pen-to-square"></i> Modifica
                                     </router-link>
                                 </li>
