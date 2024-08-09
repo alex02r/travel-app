@@ -53,10 +53,10 @@ export default {
             <div class="c-stepper__content" v-motion="motionFadeLeft">
                 <h3 class="c-stepper__title" :class="stage.state ? 'content-active' : ''" data-bs-toggle="modal" data-bs-target="#stageModal" @click="stageValue = stage"><i :class="stage.state ? 'fas fa-check' : 'fas fa-xmark'"></i> {{ stage.title }}</h3>
                 <div class="row align-items-center">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <img :src="stage.img" :alt="stage.title" class="img-fluid">
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                         <p class="c-stepper__desc" :class="stage.state ? 'content-active' : ''" style="line-height: 1.4;">{{ stage.desc }}</p>
                         <StarRating :rating="stage.rating" :readonly="true"/>
                     </div>
