@@ -51,7 +51,27 @@ export default {
     <ol class="c-stepper mt-4">
         <li class="c-stepper__item" v-for="(stage, index) in road.stages" :key="index" :class="stage.state ? 'item-active' : ''">
             <div class="c-stepper__content" v-motion="motionFadeLeft">
-                <h3 class="c-stepper__title" :class="stage.state ? 'content-active' : ''" data-bs-toggle="modal" data-bs-target="#stageModal" @click="stageValue = stage"><i :class="stage.state ? 'fas fa-check' : 'fas fa-xmark'"></i> {{ stage.title }}</h3>
+                <h3 class="c-stepper__title" :class="stage.state ? 'content-active' : ''">
+                    <div class="d-flex gap-4">
+                        <span data-bs-toggle="modal" data-bs-target="#stageModal" @click="stageValue = stage">
+                            <i :class="stage.state ? 'fas fa-check' : 'fas fa-xmark'"></i> {{ stage.title }}
+                        </span>
+                        <div class="dropdown">
+                            <a class="link-underline link-underline-opacity-0" :class="stage.state ? 'link-light' : 'link-dark'" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <router-link :to="{ name: 'editStage', params: { id: stage.id } }" class="dropdown-item">
+                                        <i class="fa-regular fa-pen-to-square"></i> Modifica
+                                    </router-link>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash-can"></i> Elimina</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </h3>
                 <div class="row align-items-center">
                     <div class="col-12 col-md-4">
                         <img :src="stage.img" :alt="stage.title" class="img-fluid">
