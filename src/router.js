@@ -7,6 +7,7 @@ import AppMyTravels from "./pages/AppMyTravels.vue";
 import AppTravel from "./pages/AppTravel.vue";
 import AppNewStage from "./pages/AppNewStage.vue";
 import AppEditTravel from "./pages/AppEditTravel.vue";
+import AppEditStage from "./pages/AppEditStage.vue";
 import App404 from "./pages/App404.vue";
 
 const router = createRouter({
@@ -34,7 +35,7 @@ const router = createRouter({
             component: AppTravel,
         },
         {
-            path: '/addNewStage/:id',
+            path: '/addNewStage//:id',
             name: 'addStage',
             component: AppNewStage,
         },
@@ -42,6 +43,11 @@ const router = createRouter({
             path: '/editTravel/:id',
             name: 'editTravel',
             component: AppEditTravel,
+        },
+        {
+            path: '/editStage/:travelId/:id',
+            name: 'editStage',
+            component: AppEditStage
         },
         {
             path: '/:pathMatch(.*)*',
