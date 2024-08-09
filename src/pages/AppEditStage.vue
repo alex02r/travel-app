@@ -17,6 +17,8 @@ export default {
             desc: '',
             img: '',
             rating: 0,
+            errors: {},
+            modify: false
         }
     },
     created() {
@@ -38,9 +40,111 @@ export default {
             if (!this.travel || !this.stage) {
                 this.$router.push({ name: 'not-found' });
             }
+
+            this.title = this.stage.title 
+            this.desc = this.stage.desc
+            this.date = this.stage.date
+            this.img = this.stage.img
+            this.address = this.stage.address
+            this.rating = this.stage.rating
+
             return;
+        },
+        checkOldValue(){
+            if (this.title == this.stage.title && this.address === this.stage.address && this.date === this.stage.date && this.desc === this.stage.desc && this.img === this.stage.img && this.rating === this.stage.rating) {
+                this.modify = false
+            }else{
+                this.modify = true
+            }
+        },
+        getUrlImg(){
+            if (!this.img) {
+                return 'https://img.freepik.com/premium-vector/default-image-icon-vector-missing-picture-page-website-design-mobile-app-no-photo-available_87543-11093.jpg';
+            }
+            return this.img;
+        },
+        validateForm() {
+            this.errors = {};
+            //controllo sul titolo
+            if (!this.title) {
+                this.errors.title = 'Il titolo è obbligatorio.';
+            }
+            //controllo sull'indirizzo
+            if (!this.address) {
+                this.errors.address = 'L\'indirizzo è obbligatorio.';
+            }
+            //controlli sulla data
+            if (!this.date) {
+                this.errors.date = 'La data è obbligatoria.';
+            }
+            if (isNaN(Date.parse(this.date))) {
+                this.errors.date = 'Inserisci una data valida.';
+            }
+            //controllo sulla descrizione
+            if (!this.desc) {
+                this.errors.desc = 'La descrizione è obbligatoria.';
+            }
+            //controllo sulla valutazione
+            if (this.rating === 0) { // Controllo se la valutazione è stata impostata
+                this.errors.rating = 'La valutazione è obbligatoria.';
+            }
+
+            //restituisce true se non sono presenti errori
+            return Object.keys(this.errors).length === 0;
+        },
+        editStage(){
+            if (this.validateForm() && this.modify) {
+                const editedStage = {
+                    id: this.stage.id,
+                    title: this.title,
+                    address: this.address,
+                    date: this.date,
+                    desc: this.desc,
+                    img: this.getUrlImg(),
+                    rating: this.rating
+                }
+                
+                const stages = this.travel.stages;
+                // Troviamo il viaggio corrente e lo aggiorniamo nell'array dei viaggi
+                const editedStages = stages.map(stage => {
+                    return stage.id === this.stage.id ? editedStage : stage;
+                });
+                
+                this.travel.stages = editedStages;
+                // Recuperiamo l'array dei viaggi
+                const travels = StorageService.getTravels();
+                const editedTravels = travels.map(travel => {
+                    return travel.id === this.travel.id ? this.travel : travel;
+                });
+
+                // Salviamo l'array aggiornato nel LocalStorage
+                StorageService.setTravels(editedTravels);
+
+                this.$router.push({ name: 'travel', params:{ id: this.travel.id } });
+                return;
+            }
         }
     },
+    watch: {
+        title() {
+            this.checkOldValue();
+        },
+        date() {
+            this.checkOldValue();
+        },
+        desc() {
+            this.checkOldValue();
+        },
+        address() {
+            this.checkOldValue();
+        },
+        img() {
+            this.checkOldValue();
+        },
+        rating() {
+            this.checkOldValue();
+        },
+    }
 }
 </script>
 <template lang="">
@@ -50,7 +154,7 @@ export default {
                 <h1 class="text-center">Modifica la Tappa</h1>
                 <div class="card">
                     <div class="card-body">
-                        <form @submit.prevent="">
+                        <form @submit.prevent="editStage()">
                             <div class="mb-4 row align-items-center has-validation">
                                 <div class="col-12 col-md-4">
                                     <label for="title" class="form-label">Nome della tappa:</label>
@@ -107,7 +211,7 @@ export default {
                                     <div v-if="errors.rating" class="invalid-feedback" style="display:block">{{ errors.rating }}</div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-dark rounded-pill">Aggiungi</button>
+                            <button type="submit" class="btn btn-dark rounded-pill" :disabled="!modify" >Aggiungi</button>
                         </form>
                     </div>
                 </div>
