@@ -87,6 +87,9 @@ export default {
 
                 // Salviamo l'array aggiornato nel LocalStorage
                 StorageService.setTravels(updatedTravels);
+
+                this.$router.push({ name: 'travel', params:{ id: this.travel.id } });
+                return;
             }
         }
     },
