@@ -126,45 +126,69 @@ export default {
 </script>
 <template lang="">
     <div class="container py-5">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
-                <h1>Inserisci un nuovo step </h1>
+                <h1 class="text-center">Inserisci una nuova tappa </h1>
                 <div class="card">
                     <div class="card-body">
                         <form @submit.prevent="addNewStage()" >
-                            <div class="mb-3 has-validation">
-                                <label for="title" class="form-label">Nome della tappa:</label>
-                                <input type="text" id="title" name="title" v-model="title" :class="{'form-control': true, 'is-invalid': errors.title}">
-                                <div v-if="errors.title" class="invalid-feedback">{{ errors.title }}</div>
+                            <div class="mb-4 row align-items-center has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="title" class="form-label">Nome della tappa:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="text" id="title" name="title" v-model="title" :class="{'form-control': true, 'is-invalid': errors.title}">
+                                    <div v-if="errors.title" class="invalid-feedback">{{ errors.title }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="address" class="form-label">Indirizzo:</label>
-                                <input type="text" id="address" name="address" v-model="address" :class="{'form-control': true, 'is-invalid': errors.address}">
-                                <div v-if="errors.address" class="invalid-feedback">{{ errors.address }}</div>
+                            <div class="mb-4 row align-items-center has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="address" class="form-label">Indirizzo:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="text" id="address" name="address" v-model="address" :class="{'form-control': true, 'is-invalid': errors.address}">
+                                    <div v-if="errors.address" class="invalid-feedback">{{ errors.address }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="date" class="form-label">Data:</label>
-                                <input type="date" id="date" name="date" v-model="date" :class="{'form-control': true, 'is-invalid': errors.date}">
-                                <div v-if="errors.date" class="invalid-feedback">{{ errors.date }}</div>
+                            <div class="mb-4 row align-items-center has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="date" class="form-label">Data:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="date" id="date" name="date" v-model="date" :class="{'form-control': true, 'is-invalid': errors.date}">
+                                    <div v-if="errors.date" class="invalid-feedback">{{ errors.date }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="desc" class="form-label">Descrizione:</label>
-                                <textarea name="desc" id="desc" v-model="desc" :class="{'form-control': true, 'is-invalid': errors.desc}">
-
-                                </textarea>
-                                <div v-if="errors.desc" class="invalid-feedback">{{ errors.desc }}</div>
+                            <div class="mb-4 row align-items-center has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="desc" class="form-label">Descrizione:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <textarea name="desc" id="desc" v-model="desc" :class="{'form-control': true, 'is-invalid': errors.desc}">
+    
+                                    </textarea>
+                                    <div v-if="errors.desc" class="invalid-feedback">{{ errors.desc }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="img" class="form-label">Inserisci l'URL dell'immagine:</label>
-                                <input type="text" id="img" name="img" v-model="img" :class="{'form-control': true, 'is-invalid': errors.img}">
-                                <div v-if="errors.img" class="invalid-feedback">{{ errors.img }}</div>
+                            <div class="mb-4 row align-items-center has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="img" class="form-label">Inserisci l'URL dell'immagine:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="text" id="img" name="img" v-model="img" :class="{'form-control': true, 'is-invalid': errors.img}">
+                                    <div v-if="errors.img" class="invalid-feedback">{{ errors.img }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label class="form-label">Valutazione:</label>
-                                <StarRating v-model:rating="rating" :readonly="false"/>
-                                <div v-if="errors.rating" class="invalid-feedback" style="display:block">{{ errors.rating }}</div>
+                            <div class="mb-4 row align-items-center has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label class="form-label">Valutazione:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <StarRating v-model:rating="rating" :readonly="false"/>
+                                    <div v-if="errors.rating" class="invalid-feedback" style="display:block">{{ errors.rating }}</div>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-dark">Aggiungi</button>
+                            <button type="submit" class="btn btn-dark rounded-pill">Aggiungi</button>
                         </form>
                     </div>
                 </div>

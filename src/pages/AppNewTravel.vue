@@ -92,24 +92,36 @@ export default {
                 <div class="card" v-motion="motionFadeUp">
                     <div class="card-body">
                         <form @submit.prevent="saveTravel()" >
-                            <div class="mb-3 has-validation">
-                                <label for="title" class="form-label">Titlolo del viaggio:</label>
-                                <input type="text" id="title" name="title" v-model="title" :class="{'form-control': true, 'is-invalid': errors.title}">
-                                <div v-if="errors.title" class="invalid-feedback">{{ errors.title }}</div>
+                            <div class="mb-4 row has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="title" class="form-label">Titlolo del viaggio:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="text" id="title" name="title" v-model="title" :class="{'form-control': true, 'is-invalid': errors.title}">
+                                    <div v-if="errors.title" class="invalid-feedback">{{ errors.title }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="date" class="form-label">Data:</label>
-                                <input type="date" id="date" name="date" v-model="date" :class="{'form-control': true, 'is-invalid': errors.date}">
-                                <div v-if="errors.date" class="invalid-feedback">{{ errors.date }}</div>
+                            <div class="mb-4 row has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="date" class="form-label">Data:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="date" id="date" name="date" v-model="date" :class="{'form-control': true, 'is-invalid': errors.date}">
+                                    <div v-if="errors.date" class="invalid-feedback">{{ errors.date }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="desc" class="form-label">Descrizione:</label>
-                                <textarea name="desc" id="desc" v-model="desc" :class="{'form-control': true, 'is-invalid': errors.desc}">
-
-                                </textarea>
-                                <div v-if="errors.desc" class="invalid-feedback">{{ errors.desc }}</div>
+                            <div class="mb-4 row has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="desc" class="form-label">Descrizione:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <textarea name="desc" id="desc" v-model="desc" :class="{'form-control': true, 'is-invalid': errors.desc}">
+    
+                                    </textarea>
+                                    <div v-if="errors.desc" class="invalid-feedback">{{ errors.desc }}</div>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-dark">Aggiungi</button>
+                            <button type="submit" class="btn btn-dark rounded-pill">Aggiungi</button>
                         </form>
                     </div>
                 </div>

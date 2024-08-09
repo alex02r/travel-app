@@ -1,9 +1,12 @@
 <script>
 import { StorageService } from '../localStorage.service';
+import { motionFadeLeft } from '../motions';
+
 export default {
     name: 'AppEditTravel',
     data() {
         return {
+            motionFadeLeft,
             travel: null,
             title: '',
             desc: '',
@@ -107,25 +110,37 @@ export default {
                 <div class="mb-4">
                     <h1>Modifica</h1>
                 </div>
-                <div class="card">
+                <div class="card" v-motion="motionFadeLeft">
                     <div class="card-body">
                         <form @submit.prevent="editTravel()" >
-                            <div class="mb-3 has-validation">
-                                <label for="title" class="form-label">Titlolo del viaggio:</label>
-                                <input type="text" id="title" name="title" v-model="title" :class="{'form-control': true, 'is-invalid': errors.title}">
-                                <div v-if="errors.title" class="invalid-feedback">{{ errors.title }}</div>
+                            <div class="mb-4 row has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="title" class="form-label">Titlolo del viaggio:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="text" id="title" name="title" v-model="title" :class="{'form-control': true, 'is-invalid': errors.title}">
+                                    <div v-if="errors.title" class="invalid-feedback">{{ errors.title }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="date" class="form-label">Data:</label>
-                                <input type="date" id="date" name="date" v-model="date" :class="{'form-control': true, 'is-invalid': errors.date}">
-                                <div v-if="errors.date" class="invalid-feedback">{{ errors.date }}</div>
+                            <div class="mb-4 row has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="date" class="form-label">Data:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <input type="date" id="date" name="date" v-model="date" :class="{'form-control': true, 'is-invalid': errors.date}">
+                                    <div v-if="errors.date" class="invalid-feedback">{{ errors.date }}</div>
+                                </div>
                             </div>
-                            <div class="mb-3 has-validation">
-                                <label for="desc" class="form-label">Descrizione:</label>
-                                <textarea name="desc" id="desc" v-model="desc" :class="{'form-control': true, 'is-invalid': errors.desc}">
+                            <div class="mb-4 row has-validation">
+                                <div class="col-12 col-md-4">
+                                    <label for="desc" class="form-label">Descrizione:</label>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <textarea name="desc" id="desc" v-model="desc" :class="{'form-control': true, 'is-invalid': errors.desc}">
 
-                                </textarea>
-                                <div v-if="errors.desc" class="invalid-feedback">{{ errors.desc }}</div>
+                                    </textarea>
+                                    <div v-if="errors.desc" class="invalid-feedback">{{ errors.desc }}</div>
+                                </div>
                             </div>
                             <div class="d-flex gap-4">
                                 <button type="submit" class="btn btn-warning rounded-pill" :disabled="!modify">Modifica</button>
