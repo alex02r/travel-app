@@ -48,17 +48,17 @@ export default {
         li a{
             padding: 0.5rem;
             text-decoration: none;
-            color: $white;
+            color: $dark;
         }
         li a:hover{
             border-radius: 50px;
-            background-color: $soft-gray;
-            color: $dark;
+            background-color: $dark;
+            color: $light;
         }
         .active{
             border-radius: 50px;
-            background-color: $soft-gray;
-            color: $dark;
+            background-color: $dark;
+            color: $light;
         }
     }
 </style>

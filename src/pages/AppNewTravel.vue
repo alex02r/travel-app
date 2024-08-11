@@ -89,7 +89,7 @@ export default {
                     <h1>Aggiungi un nuovo viaggio</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum similique non fuga ea, commodi adipisci maiores voluptatibus beatae vel, modi ipsam. Debitis doloribus, voluptatem voluptas ipsa unde iste veritatis cumque.</p>
                 </div>
-                <div class="card" v-motion="motionFadeUp">
+                <div class="card shadow border-0" v-motion="motionFadeUp">
                     <div class="card-body">
                         <form @submit.prevent="saveTravel()" >
                             <div class="mb-4 row has-validation">

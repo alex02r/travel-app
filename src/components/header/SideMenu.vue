@@ -39,19 +39,19 @@ export default {
     @use './src/styles/partials/variables' as *;
     .my-link{
         text-decoration: none;
-        color: $white;
+        color: $dark;
         &:hover{
-            color: $light-gray;
+            color: $gray;
         }
     }
     .offcanvas{
         background-color: $dark;
-        color: $white;
+        color: $light;
     }
     .btn-close{
-        background-color: $soft-gray;
+        background-color: $medium;
     }
     #offcanvasExampleLabel{
-        color: $medium-gray;
+        color: $medium;
     }
 </style>

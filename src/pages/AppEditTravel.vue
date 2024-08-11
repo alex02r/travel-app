@@ -113,7 +113,7 @@ export default {
                 <div class="mb-4">
                     <h1>Modifica</h1>
                 </div>
-                <div class="card" v-motion="motionFadeLeft">
+                <div class="card shadow border-0" v-motion="motionFadeLeft">
                     <div class="card-body">
                         <form @submit.prevent="editTravel()" >
                             <div class="mb-4 row has-validation">

@@ -152,7 +152,7 @@ export default {
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <h1 class="text-center">Modifica la Tappa</h1>
-                <div class="card">
+                <div class="card shadow border-0">
                     <div class="card-body">
                         <form @submit.prevent="editStage()">
                             <div class="mb-4 row align-items-center has-validation">
@@ -211,7 +211,10 @@ export default {
                                     <div v-if="errors.rating" class="invalid-feedback" style="display:block">{{ errors.rating }}</div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-dark rounded-pill" :disabled="!modify" >Aggiungi</button>
+                            <div class="d-flex gap-3">
+                                <button type="submit" class="btn btn-dark rounded-pill" :disabled="!modify" >Aggiungi</button>
+                                <router-link :to="{ name: 'travel', params: { id: travel.id } }" class="btn btn-dark rounded-pill">Annulla</router-link>
+                            </div>
                         </form>
                     </div>
                 </div>

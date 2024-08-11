@@ -15,7 +15,7 @@ export default {
 </script>
 <template lang="">
     <div v-motion="motionFadeUp">
-        <div class="card text-bg-light mb-3">
+        <div class="card shadow mb-3">
             <div class="card-header">
                 <div class="d-flex justify-content-between align-items-center">
                     <span>Viaggio</span>
@@ -45,10 +45,8 @@ export default {
     </div>
 </template>
 <style lang="scss" scoped>
+@use '/src/styles/partials/variables' as *;
     .card{
-        transition: all 0.2s ease-in;
-    }
-    .card:hover{
-        transform: scale(1.05);
+        background-color: $light;
     }
 </style>

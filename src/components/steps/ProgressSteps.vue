@@ -47,17 +47,17 @@ export default {
         <h2>Tappe</h2>
         <router-link :to="{ name: 'addStage', params: { id: road.id } }" class="btn btn-sm btn-light"><i class="fas fa-plus"></i></router-link>
     </div>
-    <span class="stage-indicator" v-if="road.stages && road.stages.length > 0">Clicca sul nome della tappa per impostare lo stato *</span>
+    <span class="stage-indicator my-text-gray" v-if="road.stages && road.stages.length > 0">Clicca sul nome della tappa per impostare lo stato *</span>
     <ol class="c-stepper mt-4">
         <li class="c-stepper__item" v-for="(stage, index) in road.stages" :key="index" :class="stage.state ? 'item-active' : ''">
             <div class="c-stepper__content" v-motion="motionFadeLeft">
-                <h3 class="c-stepper__title" :class="stage.state ? 'content-active' : ''">
+                <h3 class="c-stepper__title my-text-gray" :class="stage.state ? 'content-active' : ''">
                     <div class="d-flex gap-4">
                         <span data-bs-toggle="modal" data-bs-target="#stageModal" @click="stageValue = stage">
                             <i :class="stage.state ? 'fas fa-check' : 'fas fa-xmark'"></i> {{ stage.title }}
                         </span>
                         <div class="dropdown">
-                            <a class="link-underline link-underline-opacity-0" :class="stage.state ? 'link-light' : 'link-dark'" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="link-underline link-underline-opacity-0" :class="stage.state ? 'content-active' : 'my-text-gray'" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <ul class="dropdown-menu">
@@ -77,7 +77,7 @@ export default {
                         <img :src="stage.img" :alt="stage.title" class="img-fluid">
                     </div>
                     <div class="col-12 col-md-6">
-                        <p class="c-stepper__desc" :class="stage.state ? 'content-active' : ''" style="line-height: 1.4;">{{ stage.desc }}</p>
+                        <p class="c-stepper__desc my-text-gray" :class="stage.state ? 'content-active' : ''" style="line-height: 1.4;">{{ stage.desc }}</p>
                         <StarRating :rating="stage.rating" :readonly="true"/>
                     </div>
                 </div>
@@ -113,7 +113,7 @@ export default {
 @use '/src/styles/partials/variables' as *;
     .stage-indicator{
         font-size: 0.8rem;
-        color: $dark-gray;
+
     }
     .c-stepper__item {
         position: relative;
@@ -126,11 +126,11 @@ export default {
         flex: 0 0 var(--circle-size);
         height: var(--circle-size);
         border-radius: 50%;
-        background-color: $dark-gray;
+        background-color: $light-gray;
     }
     .c-stepper__item.item-active:before {
         content: "";
-        background-color: $silver-gray;
+        background-color: $dark;
     }
     .c-stepper__item:not(:last-child):after {
         content: "";
@@ -141,28 +141,28 @@ export default {
         z-index: -1;
         transform: translateX(calc(var(--circle-size) / 2));
         width: 2px;
-        background-color: $deep-gray;
+        background-color: $light-gray;
     }
     .c-stepper__item.item-active:not(:last-child):after {
         content: "";
-        background-color: $silver-gray;
+        background-color: $dark;
     }
     .c-stepper__title {
         font-weight: bold;
         cursor: pointer;
-        color: $deep-gray;
+        
         font-size: clamp(1rem, 4vw, 1.25rem);
         margin-bottom: clamp(0.85rem, 2vmax, 1rem);
     }
     .c-stepper__desc {
-        color: $deep-gray;
+        
         font-size: clamp(0.85rem, 2vmax, 1rem);
     }
     .content-active{
-        color: $silver-gray;
+        color: $dark;
     }
     .c-stepper__content {
         max-width: 700px;
-        color: $gray;
+        
     }
 </style>

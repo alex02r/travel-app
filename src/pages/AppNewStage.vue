@@ -129,7 +129,7 @@ export default {
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <h1 class="text-center">Inserisci una nuova tappa </h1>
-                <div class="card">
+                <div class="card shadow border-0">
                     <div class="card-body">
                         <form @submit.prevent="addNewStage()" >
                             <div class="mb-4 row align-items-center has-validation">

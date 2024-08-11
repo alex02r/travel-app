@@ -17,6 +17,13 @@
 }
 
 body{
-    background-color: $dark;
-    color: $white;
+    background-color: $medium;
+    color: $dark;
+}
+
+.text-light, .link-light{
+    color: $light;
+}
+.my-text-gray{
+    color: $gray
 }
