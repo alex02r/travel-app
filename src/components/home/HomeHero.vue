@@ -5,13 +5,33 @@ export default {
 </script>
 <template lang="">
     <div class="container py-5">
-        <div class="row">
+        <div class="row row-gap-5 justify-content-center">
             <div class="col-12">
-                <div class="">
-                    <h1 class="text-center text-md-start">Home Page</h1>
+                <div class="text-center">
+                    <h1 class="mb-4">Il Tuo Diario di Viaggio Digitale</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, provident libero. Illum ad aliquam temporibus, atque eligendi repudiandae beatae consectetur, repellendus ipsam rerum voluptatibus accusantium quos hic nam blanditiis maxime.
+                        Crea itinerari dettagliati, traccia le tue tappe e rivivi ogni momento, tutto in un'unica app.
                     </p>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-around">
+                <div class="col-6 col-md-2 text-center">
+                    <h2>Aggiungi un viaggio alla tua lista</h2>
+                    <router-link to="addTravel" class="btn btn-dark rounded-pill">
+                        <i class="fas fa-arrow-up-right-from-square"></i> Inizia ora
+                    </router-link>
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <h2>Accedi ai tuoi viaggi anche se sei offline</h2>
+                    <router-link to="myTravels" class="btn btn-dark rounded-pill">
+                        <i class="fas fa-plane"></i> Viaggi
+                    </router-link>
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <h2>Scopri di più su Travel App</h2>
+                    <router-link to="info" class="btn btn-dark rounded-pill">
+                        <i class="fas fa-info"></i> Info
+                    </router-link>
                 </div>
             </div>
         </div>
