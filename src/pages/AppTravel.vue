@@ -67,7 +67,22 @@ export default {
         <div class="row">
             <div class="col-12">
                 <div class="mb-4">
-                    <h1>{{ travel.title }}</h1>
+                    <div class="d-flex gap-4 align-items-center">
+                        <h1>{{ travel.title }}</h1>
+                        <div class="dropdown">
+                            <a class="link-underline link-dark link-underline-opacity-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <router-link :to="{ name: 'editTravel', params: { id: travel.id } }" class="dropdown-item">
+                                        <i class="fa-regular fa-pen-to-square"></i> Modifica
+                                    </router-link>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash-can"></i> Elimina</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     <h4>{{ travel.date }}</h4>
                     <p> {{ travel.desc }} </p>
                 </div>
