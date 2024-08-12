@@ -4,7 +4,7 @@ export const store = reactive({
     menuList: [
         {
             name: 'home',
-            label: 'Home Page'
+            label: 'Home'
         },
         {
             name: 'addTravel',
@@ -13,6 +13,11 @@ export const store = reactive({
         {
             name: 'myTravels',
             label: 'I Miei Viaggi'
+        }
+        ,
+        {
+            name: 'info',
+            label: 'Info'
         }
     ]
 })
