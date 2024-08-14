@@ -71,7 +71,7 @@ export default {
                         <h1>{{ travel.title }}</h1>
                         <div class="dropdown">
                             <a class="link-underline link-dark link-underline-opacity-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <i class="fa-solid fa-ellipsis-vertical fs-3"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
