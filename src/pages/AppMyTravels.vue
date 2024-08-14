@@ -27,8 +27,10 @@ export default {
     <div class="container py-5">
         <div class="row row-gap-4">
             <div class="col-12">
-                <h1>Tutti i miei viaggi</h1>
-                <router-link to="addTravel" class="btn btn-light"><i class="fas fa-plus"></i></router-link>
+                <div class="d-flex align-items-center gap-4">
+                    <h1>Tutti i miei viaggi</h1>
+                    <router-link to="addTravel" class="btn btn-dark"><i class="fas fa-plus"></i></router-link>
+                </div>
             </div>
             <div class="col-12 col-md-4 col-lg-3" v-for="travel in travels" ::key="travel.id">
                 <TravelCard :travel="travel"/>

@@ -87,7 +87,9 @@ export default {
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="mb-4">
                     <h1>Aggiungi un nuovo viaggio</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum similique non fuga ea, commodi adipisci maiores voluptatibus beatae vel, modi ipsam. Debitis doloribus, voluptatem voluptas ipsa unde iste veritatis cumque.</p>
+                    <p>
+                        Inserisci i dettagli del tuo viaggio. In questo modo avrai sempre a disposizione i tuoi ricordi, consultabile anche offline.
+                    </p>
                 </div>
                 <div class="card shadow border-0" v-motion="motionFadeUp">
                     <div class="card-body">
