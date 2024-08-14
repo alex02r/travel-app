@@ -25,3 +25,18 @@ export const motionFadeLeft = {
         }
     }
 }
+export const motionFadeIn = {
+    initial:{
+        opacity: 0,
+        scale: 0,
+        rotate: 180,
+    },
+    enter: {
+        opacity: 1,
+        scale: 1,
+        rotate: 0,
+        transition:{
+            duration: 600
+        }
+    }
+}
