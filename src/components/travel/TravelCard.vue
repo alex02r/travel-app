@@ -20,7 +20,7 @@ export default {
                 <div class="d-flex justify-content-between align-items-center">
                     <span>Viaggio</span>
                     <div class="dropdown">
-                        <a class="link-underline link-dark link-underline-opacity-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="link-underline link-light link-underline-opacity-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -48,5 +48,9 @@ export default {
 @use '/src/styles/partials/variables' as *;
     .card{
         background-color: $light;
+    }
+    .card-header{
+        background-color: $dark;
+        color: $light;
     }
 </style>
