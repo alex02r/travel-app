@@ -14,7 +14,7 @@ export default {
                     </p>
                 </div>
             </div>
-            <div class="row align-items-center justify-content-around">
+            <div class="row align-items-center justify-content-around row-gap-4">
                 <div class="col-6 col-md-2 text-center">
                     <h2>Aggiungi un viaggio alla tua lista</h2>
                     <router-link to="addTravel" class="btn btn-dark rounded-pill">
