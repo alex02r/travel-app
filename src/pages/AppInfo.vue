@@ -20,7 +20,7 @@ export default {
                     Creare un nuovo viaggio su Travel App è semplice e intuitivo. Segui questi passi per iniziare a organizzare la tua prossima avventura:
                     <ol>
                         <li>
-                            <strong>Accedi alla Sezione "Aggiungi Viaggio":</strong> Clicca sul pulsante "Crea Nuovo Viaggio" nella homepage o nel menu di navigazione.
+                            <strong>Accedi alla Sezione "Aggiungi Viaggio":</strong> Clicca sul pulsante "Inizia ora" nella homepage o su "Aggiungi Viaggio" nel menu di navigazione.
                         </li>
                         <li>
                             <strong>Inserisci i Dettagli del Viaggio:</strong> Aggiungi il titolo del viaggio, una breve descrizione e la data di inizio del tuo viaggio.
@@ -32,10 +32,10 @@ export default {
                 </p>
                 <div class="row">
                     <div class="col-6">
-                        IMG
+                        <img src="/src/assets/img/new-travel.png" alt="Nuovo Viaggio" class="img-fluid shadow rounded">
                     </div>
                     <div class="col-6">
-                        IMG
+                        <img src="/src/assets/img/form-new-travel.png" alt="Form Aggiunta Viaggio" class="shadow img-fluid rounded">
                     </div>
                 </div>
             </div>
@@ -52,12 +52,9 @@ export default {
                     <p>
                         Clicca sul pulsante "+" affianco a "Tappe", nella pagina del viaggio. Inserisci il nome della destinazione, una breve descrizione, la data prevista per la visita, e, se vuoi, una foto rappresentativa, Altrimenti ne viene inserita una di default.
                     </p>
-                    <div class="row">
+                    <div class="row justify-content-center mb-2">
                         <div class="col-6">
-                            IMG
-                        </div>
-                        <div class="col-6">
-                            IMG
+                            <img src="/src/assets/img/new-stage.png" alt="Form Aggiunta Tappa" class="shadow img-fluid rounded">
                         </div>
                     </div>
                 </div>
@@ -72,12 +69,12 @@ export default {
                     <p>
                         Una volta visitata una tappa, contrassegnala come completata. Per farlo è necessario cliccare sul nome della tappa, comparirà una modale di conferma, cliccando su "salva" imposterai la Tappa. Verrà visualizzata con un'icona a forma di check e sarà colorata per indicare che è stata completata. Le tappe non completate saranno visualizzate con una "X" e con una colorazione più leggera.
                     </p>
-                    <div class="row">
-                        <div class="col-6">
-                            IMG
+                    <div class="row row-gap-2 justify-content-center mb-2">
+                        <div class="col-10 col-md-6">
+                            <img src="/src/assets/img/stage.png" alt="Visualizzazione tappa" class="img-fluid shadow rounded">
                         </div>
-                        <div class="col-6">
-                            IMG
+                        <div class="col-10 col-md-6">
+                            <img src="/src/assets/img/modal-stage.png" alt="Visualizzazione modale della tappa" class="img-fluid shadow rounded">
                         </div>
                     </div>
                 </div>
@@ -86,19 +83,19 @@ export default {
                     <p>
                         Se hai bisogno di aggiornare una tappa o rimuoverla, basta cliccare sull'icona <i class=" fb-4 fa-solid fa-ellipsis-vertical"></i> (situata di fianco al nome della tappa) per fa apparire le opzioni modifica e elimina.
                     </p>
-                    <div class="row">
-                        <div class="col-6">
-                            IMG
+                    <div class="row row-gap-2 justify-content-center mb-2">
+                        <div class="col-10 col-md-6">
+                            <img src="/src/assets/img/drop-stage.png" alt="Visualizzazione dropdown tappa" class="img-fluid shadow rounded">
                         </div>
-                        <div class="col-6">
-                            IMG
+                        <div class="col-10 col-md-6">
+                            <img src="/src/assets/img/edit-stage.png" alt="Modifica della tappa" class="img-fluid shadow rounded">
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Visualizzazione Mappa -->
             <div class="col-12 col-md-8">
-                <h2>Visualizza le Tappe sulla MAppa</h2>
+                <h2>Visualizza le Tappe sulla Mappa</h2>
                 <p>
                     Uno dei punti di forza di Travel App è la possibilità di visualizzare tutte le tappe del tuo viaggio su una mappa interattiva. Ecco come funziona:
                     <ol>
@@ -113,12 +110,9 @@ export default {
                         </li>
                     </ol>
                 </p>
-                <div class="row">
-                    <div class="col-6">
-                        IMG
-                    </div>
-                    <div class="col-6">
-                        IMG
+                <div class="row justify-content-center">
+                    <div class="col-10 col-md-6">
+                        <img src="/src/assets/img/map.png" alt="Mappa delle Tappe" class="img-fluid shadow rounded">
                     </div>
                 </div>
             </div>
@@ -129,6 +123,9 @@ export default {
         </div>
     </div>
 </template>
-<style lang="">
+<style lang="scss" scoped>
+    img{
+        filter: brightness(80%);
+    }
     
 </style>
