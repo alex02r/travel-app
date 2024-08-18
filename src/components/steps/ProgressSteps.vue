@@ -37,6 +37,8 @@ export default {
             });
             // Salviamo l'array aggiornato nel LocalStorage
             StorageService.setTravels(updatedTravels);
+            //eseguiamo una vibrazione di 200millisecondi
+            navigator.vibrate(200);
             return
         }
     },

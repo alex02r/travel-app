@@ -59,6 +59,9 @@ export default {
             //aggiorniamo l'array
             StorageService.setTravels(travels);
 
+            //eseguiamo una vibrazione di 200millisecondi
+            navigator.vibrate(200);
+            
             this.$router.push({ name: 'myTravels' });
             return;
         }
