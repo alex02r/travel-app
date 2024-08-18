@@ -44,6 +44,23 @@ export default {
                 }, 1000);
             }    
 
+        },
+        deleteTravel(){
+            //recuperiamo l'array dei viaggi
+            let travels = StorageService.getTravels();
+            //cicliamo l'array
+            for (let i = 0; i < travels.length; i++) {
+                //controlliamo quando visualizziamo il nostro viaggio e lo eliminiamo
+                if (travels[i].id == this.travel.id ) {
+                    travels.splice(i, 1);
+                    break;
+                }
+            }
+            //aggiorniamo l'array
+            StorageService.setTravels(travels);
+
+            this.$router.push({ name: 'myTravels' });
+            return;
         }
     },
 }
@@ -79,7 +96,9 @@ export default {
                                         <i class="fa-regular fa-pen-to-square"></i> Modifica
                                     </router-link>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash-can"></i> Elimina</a></li>
+                                <li data-bs-toggle="modal" data-bs-target="#travelModal">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-trash-can"></i> Elimina</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -97,6 +116,29 @@ export default {
                 <div class="">
                     <h2>Mappa</h2>
                     <StepsMap :trip="travel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="travelModal" tabindex="-1" aria-labelledby="travelModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-dark">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="travelModalLabel">{{ travel.title }}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <p>
+                        Sei sicuro di voler eliminare questo viaggio ?
+                        <br>
+                        <span class="stage-indicator">
+                            Una volta eliminato, non potrai recuperarlo. perderai anche tutte le tappe.
+                        </span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-danger rounded-pill" @click="deleteTravel()" data-bs-dismiss="modal">Elimina</button>
                 </div>
             </div>
         </div>
