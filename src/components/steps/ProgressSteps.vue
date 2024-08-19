@@ -57,9 +57,6 @@ export default {
             //salviamo il nuovo array
             StorageService.setTravels(updatedTravels);
 
-            //eseguiamo una vibrazione di 200millisecondi
-            navigator.vibrate(200);
-
             window.location.reload();
             return
         }
