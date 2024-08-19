@@ -36,7 +36,7 @@ export default {
                 <TravelCard :travel="travel"/>
             </div>
             <div class="col-12" v-if="travels.length == 0">
-                <h3>Non ci sono viaggi da visualizzare <router-link to="addTravel" class="link-light link-underline-opacity-25 link-underline-opacity-75-hover">aggiungine uno</router-link></h3>
+                <h3>Non ci sono viaggi da visualizzare <router-link to="addTravel" class="link-dark link-underline-opacity-25 link-underline-opacity-75-hover">aggiungine uno</router-link></h3>
             </div>
         </div>
     </div>
