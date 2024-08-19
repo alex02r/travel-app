@@ -121,8 +121,10 @@ export default {
                 StorageService.setTravels(editedTravels);
                 //eseguiamo una vibrazione di 200millisecondi
                 navigator.vibrate(200);
+                setTimeout(() => {
+                    this.$router.push({ name: 'travel', params:{ id: this.travel.id } });
+                }, 300);
 
-                this.$router.push({ name: 'travel', params:{ id: this.travel.id } });
                 return;
             }
         }

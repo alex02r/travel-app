@@ -100,9 +100,10 @@ export default {
                 StorageService.setTravels(updatedTravels);
                 //eseguiamo una vibrazione di 200millisecondi
                 navigator.vibrate(200);
-
-                // Reindirizzamento o altro comportamento dopo il salvataggio
-                this.$router.push({ name: 'travel', params: { id: this.travel.id } });
+                setTimeout(() => {
+                    // Reindirizzamento o altro comportamento dopo il salvataggio
+                    this.$router.push({ name: 'travel', params: { id: this.travel.id } });
+                }, 300);
             }
 
         },

@@ -68,13 +68,14 @@ export default {
                 StorageService.setTravels(travels);
                 //eseguiamo una vibrazione di 200millisecondi
                 navigator.vibrate(200);
-                
                 // Reset form
                 this.title = '';
                 this.date = '';
                 this.desc = '';
-
-                this.$router.push({ name: 'travel', params: { id: travel.id } });
+                
+                setTimeout(() => {
+                    this.$router.push({ name: 'travel', params: { id: travel.id } });
+                }, 400);
                 return
             }
         }

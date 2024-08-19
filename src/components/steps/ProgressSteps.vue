@@ -59,8 +59,9 @@ export default {
 
             //eseguiamo una vibrazione di 200millisecondi
             navigator.vibrate(200);
-
-            window.location.reload();
+            setTimeout(() => {
+                window.location.reload();
+            }, 300);
             return
         }
     },

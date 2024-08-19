@@ -61,8 +61,9 @@ export default {
 
             //eseguiamo una vibrazione di 200millisecondi
             navigator.vibrate(200);
-            
-            this.$router.push({ name: 'myTravels' });
+            setTimeout(() => {
+                this.$router.push({ name: 'myTravels' });
+            }, 300);
             return;
         }
     },
