@@ -100,6 +100,7 @@ export default {
                 StorageService.setTravels(updatedTravels);
                 
                 this.$router.push({ name: 'travel', params: { id: this.travel.id } });
+                return
             }
 
         },

@@ -58,7 +58,6 @@ export default {
             }
             //aggiorniamo l'array
             StorageService.setTravels(travels);
-
             
             this.$router.push({ name: 'myTravels' });
             return;

@@ -66,7 +66,6 @@ export default {
                 travels.push(travel);
                 //salviamo l'array dei viaggi
                 StorageService.setTravels(travels);
-                
                 // Reset form
                 this.title = '';
                 this.date = '';
