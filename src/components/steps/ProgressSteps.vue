@@ -40,6 +40,28 @@ export default {
             //eseguiamo una vibrazione di 200millisecondi
             navigator.vibrate(200);
             return
+        },
+        deleteStage(){
+            //recuperiamo l'array dei viaggi
+            let travels = StorageService.getTravels();
+
+            //modifichiamo l'array dei viaggi per eliminare lo stage
+            const updatedTravels = travels.map(travel => {
+                //controlliamo se sia lo stage da eliminare
+                if (travel.id === this.road.id) {
+                    // Filtriamo gli stage per rimuovere quello con l'ID corrispondente
+                    travel.stages = travel.stages.filter(stage => stage.id !== this.stageValue.id);
+                }
+                return travel;
+            });
+            //salviamo il nuovo array
+            StorageService.setTravels(updatedTravels);
+
+            //eseguiamo una vibrazione di 200millisecondi
+            navigator.vibrate(200);
+
+            window.location.reload();
+            return
         }
     },
 }
@@ -68,7 +90,9 @@ export default {
                                         <i class="fa-regular fa-pen-to-square"></i> Modifica
                                     </router-link>
                                 </li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash-can"></i> Elimina</a></li>
+                                <li data-bs-toggle="modal" data-bs-target="#stageDeleteModal" @click="stageValue = stage">
+                                    <a class="dropdown-item" href="#"><i class="fas fa-trash-can"></i> Elimina</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -86,6 +110,7 @@ export default {
             </div>
         </li>
     </ol>
+    <!-- modal settare lo stage -->
     <div class="modal fade" id="stageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content text-dark" v-if="stageValue">
@@ -106,6 +131,30 @@ export default {
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Annulla</button>
                     <button type="button" class="btn btn-warning rounded-pill" @click="setStep(stageValue)" data-bs-dismiss="modal">Salva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal per l'elimiazione della tappa -->
+    <div class="modal fade" id="stageDeleteModal" tabindex="-1" aria-labelledby="stageDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-dark" v-if="stageValue">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="stageDeleteModalLabel">{{ stageValue.title }}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-4">
+                    <p>
+                        Sei sicuro di voler eliminare questa tappa ?
+                        <br>
+                        <span class="stage-indicator">
+                            Una volta eliminata, non potrai recuperarla.
+                        </span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Annulla</button>
+                    <button type="button" class="btn btn-danger rounded-pill" @click="deleteStage()" data-bs-dismiss="modal">Elimina</button>
                 </div>
             </div>
         </div>
